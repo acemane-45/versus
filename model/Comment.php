@@ -26,7 +26,10 @@ class Comment extends Hydrator
      */
     private $date;
 
-   
+    /**
+     * @var bool
+     */
+    private $flag;
     //*************************Constructeur****************/
 
     /**
@@ -60,7 +63,11 @@ class Comment extends Hydrator
     {
         return $this->date;
     }
-
+    
+    public function isFlag()
+    {
+        return $this->flag;
+    }
     
 
 
@@ -85,6 +92,8 @@ class Comment extends Hydrator
     {
         $this->date = $date;
     }
-    
+    public function setFlag($flag)
+    {
+        $this->flag = $flag;
   
 }
