@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+    font-size: 25px;
+}
+
+.logo {
+    height: 500px;
+    width: 400px;
+}
+
+.masquote {}
+
+.content {
+    display: inline-flex;
+}
