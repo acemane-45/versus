@@ -9,19 +9,19 @@ class Validation
     public function validate($data, $name)
     {
         if($name === 'Console') {
-            $articleValidation = new ConsoleValidation();
+            $consoleValidation = new ConsoleValidation();
             $errors = $consoleValidation->check($data);
             return $errors;
         }
         //gestion de la classe JeuxValidation 
         elseif ($name === 'Jeux') {
-            $commentValidation = new JeuxValidation();
+            $jeuxValidation = new JeuxValidation();
             $errors = $jeuxValidation->check($data);
             return $errors;
         }
         //gestion de la classe MarquesValidation 
         elseif ($name === 'Marque') {
-            $commentValidation = new MarquesValidation();
+            $marqueValidation = new MarquesValidation();
             $errors = $marqueValidation->check($data);
             return $errors;
         }

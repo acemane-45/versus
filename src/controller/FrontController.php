@@ -8,19 +8,23 @@ class FrontController extends Controller
 {
     public function home()
     {
-        $articles = $this->articleDAO->getArticlespagin();
+       $marques = $this->marqueDAO->getMarques();
         return $this->view->render('home', [
-           'articles' => $articles
+            'marques' => $marques
         ]);
+
+           
     }
 
     // liste des consoles
     public function consoles()
     {
-        $consoles = $this->consolesDAO->getConsoles();
+        $consoles = $this->consoleDAO->getConsoles($marque_id);
         return $this->view->render('consoles', [
            'consoles' => $consoles
+           
         ]);
+    
     }
   
     // console + jeux

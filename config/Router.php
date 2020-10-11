@@ -28,50 +28,27 @@ class Router
         try{
             if(isset($route))
             {
-                if($route === 'console'){
-                    $this->frontController->console($this->request->getGet()->get('consoleId'));
+                if($route === 'consoles'){
+                    $this->frontController->consoles($this->request->getGet()->get('marqueId'));
                 }
-                elseif ($route === 'listeconsole'){
-                    $this->frontController->listeconsole($this->request->getGet()->get('marqueId')); 
+                elseif($route === 'accueil'){
+                    $this->frontController->marques($this->request->getGet()->get('marqueId'));
+                }
+                elseif ($route === 'listarticles'){
+                    $this->frontController->listarticles($this->request->getGet()->get('articleId')); 
                 } 
-                elseif ($route === 'marques'){
-                    $this->frontController->marques($this->request->getGet()->get('marqueId')); 
-                } 
-                elseif ($route === 'listejeux'){
-                    $this->frontController->listejeux($this->request->getGet()->get('consoleId')); 
-                } 
-                elseif ($route === 'addConsole'){
-                    $this->backController->addConsole($this->request->getPost());
+               
+                elseif ($route === 'addArticle'){
+                    $this->backController->addArticle($this->request->getPost());
                 }
-                elseif ($route === 'addJeux'){
-                    $this->backController->addJeux($this->request->getPost());
+                elseif ($route === 'editArticle'){
+                    $this->backController->editArticle($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }
-                elseif ($route === 'addMarque'){
-                    $this->backController->addMarques($this->request->getPost());
-                }
-                elseif ($route === 'editConsole'){
-                    $this->backController->editConsole($this->request->getPost(), $this->request->getGet()->get('consoleId'));
-                }
-                elseif ($route === 'editJeux'){
-                    $this->backController->editJeux($this->request->getPost(), $this->request->getGet()->get('jeuxId'));
-                }
-                elseif ($route === 'editMarque'){
-                    $this->backController->editMarques($this->request->getPost(), $this->request->getGet()->get('marqueId'));
-                }
-                elseif($route === 'deleteConsole'){
-                    $this->backController->deleteConsole($this->request->getGet()->get('consoleId'));
-                }
-                elseif($route === 'deleteJeux'){
-                    $this->backController->deleteJeux($this->request->getGet()->get('jeuxId'));
-                }
-                elseif($route === 'deleteMarque'){
-                    $this->backController->deleteMarques($this->request->getGet()->get('marqueId'));
+                elseif($route === 'deleteArticle'){
+                    $this->backController->deleteArticle($this->request->getGet()->get('articleId'));
                 }
                 elseif($route === 'addComment'){
-                    $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('jeuxId'));
-                }
-                elseif($route === 'addNote'){
-                    $this->frontController->addNote($this->request->getPost(), $this->request->getGet()->get('jeuxId'));
+                    $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }
                 elseif($route === 'flagComment'){
                     $this->frontController->flagComment($this->request->getGet()->get('commentId'));

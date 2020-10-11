@@ -45,7 +45,10 @@ class BackController extends Controller
             'jeux' => $jeux,
             'comments' => $comments,
             'users' => $users
+            
            ]);
+           var_dump($consoles);
+
         }
     }
     

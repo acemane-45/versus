@@ -7,34 +7,31 @@ use App\src\model\Console;
 
 class ConsoleDAO extends DAO
 {
-     //Permet de récupérer la liste de tout les consoles
-     public function getConsoles()
+     //Permet de récupérer la liste de tout les consoles d'une marque
+     public function getConsoles($marque_id)
      {
- 
-         $sql = 'SELECT id, title, media FROM console INNER JOIN marque ON marque_id ORDER BY marque.id ';
-         $result = $this->createQuery($sql);
+         $sql = 'SELECT title, media FROM console WHERE marque_id = ?';
+         $result = $this->creatQuery($sql,[$marque_id]);
          $consoles = [];
-         foreach ($result as $data){
-             
+         foreach($result as $data){
              $consoles[] = new Console($data);
          }
-         $result->closeCursor();
          return $consoles;
      }
-
+  
 
        //Permet de recupérer une console
-    public function getConsole( $consleId)
+    public function getConsole( $marqueId)
     {
       
         $sql = 'SELECT * FROM console WHERE id = ?';      
-        $result = $this->createQuery($sql, [$consoleId]);
+        $result = $this->createQuery($sql);
       
         foreach ($result as $data){
           
             $console = new Console($data);
        }
-       
+      
         return $console;
     }
 
@@ -43,7 +40,7 @@ class ConsoleDAO extends DAO
     //Permet d'ajouter une console dans la BDD
     public function addConsole(Parameter $post, $userId)
     {
-        $sql = 'INSERT INTO console (title, content, date, media,marques_id, user_id) VALUES (?, ?, NOW(), ?)';
+        $sql = 'INSERT INTO console (title, content, date, media, marque_id, user_id) VALUES (?, ?, NOW(), ?)';
         $this->createQuery($sql, [$post->get('title'), $post->get('content'),$post->get('date'),$post->get('media'),$post->get('marques_id'), $userId]);
     }
     
@@ -51,13 +48,13 @@ class ConsoleDAO extends DAO
     //Permet de modifier une console dans la BDD
     public function editConsole(Parameter $post, $consoleId)
     {
-        $sql = 'UPDATE console SET title=:title, content=:content, date=:date, media=:media, marques_id=:marques_id WHERE id=:consoleId';
+        $sql = 'UPDATE console SET title=:title, content=:content, date=:date, media=:media, marque_id=:marque_id WHERE id=:consoleId';
         $this->createQuery($sql, [
             'title' => $post->get('title'),
             'content' => $post->get('content'),
             'date' => $post->get('date'),
             'media' => $post->get('media'),
-            'marques_id' => $post->get('marques_id'),
+            'marque_id' => $post->get('marque_id'),
            
             'consoleId' => $consoleId
         ]);

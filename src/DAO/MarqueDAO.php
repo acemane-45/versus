@@ -12,7 +12,7 @@ class MarqueDAO extends DAO
         public function getMarques()
         {
     
-            $sql = 'SELECT * date FROM marque ORDER BY id DESC ';
+            $sql = 'SELECT id, name FROM marque WHERE id  ';
             $result = $this->createQuery($sql);
             $marques = [];
             foreach ($result as $data){
@@ -21,9 +21,10 @@ class MarqueDAO extends DAO
             }
             $result->closeCursor();
             return $marques;
+            
         }
 
-             //Permet de recupérer une console
+             //Permet de recupérer une marque
     public function getMarque( $marqueId)
     {
       
@@ -43,22 +44,21 @@ class MarqueDAO extends DAO
     //Permet d'ajouter une marque dans la BDD
     public function addMarque(Parameter $post, $userId)
     {
-        $sql = 'INSERT INTO marque (title, logo, pub, infos, date, user_id) VALUES (?, ?, NOW(), ?)';
-        $this->createQuery($sql, [$post->get('title'), $post->get('logo'),$post->get('date'),$post->get('infos'),$post->get('pub'), $userId]);
+        $sql = 'INSERT INTO marque (name, logo, pub, infos, date, user_id) VALUES (?, ?, NOW(), ?)';
+        $this->createQuery($sql, [$post->get('name'), $post->get('logo'),$post->get('date'),$post->get('infos'),$post->get('pub'), $userId]);
     }
     
 
-    //Permet de modifier une console dans la BDD
-    public function editConsole(Parameter $post, $consoleId)
+    //Permet de modifier une marque dans la BDD
+    public function editMarque(Parameter $post, $marqueId)
     {
-        $sql = 'UPDATE marque SET title=:title, logo=:logo, date=:date,  infos=:infos, pub=:pub WHERE id=:marqueId';
+        $sql = 'UPDATE marque SET name=:name, logo=:logo, date=:date,  infos=:infos, pub=:pub WHERE id=:marqueId';
         $this->createQuery($sql, [
-            'title' => $post->get('title'),
+            'name' => $post->get('name'),
             'logo' => $post->get('logo'),
             'date' => $post->get('date'),
             'infos' => $post->get('infos'),
             'pub' => $post->get('pub'),
-           
             'marqueId' => $marqueId
         ]);
     }

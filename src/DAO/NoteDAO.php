@@ -9,18 +9,18 @@ use App\src\model\Marques;
 class NoteDAO extends DAO 
 {
         //Permet de récupérer la liste de toutes les notes d'un jeux
-        public function getNotes()
+        public function getNote()
         {
     
-            $sql = 'SELECT * date FROM note INNER JOIN jeux ON jeux_id ORDER BY jeux_id DESC ';
+            $sql = 'SELECT score FROM note WHERE jeux_id ORDER BY id DESC';
             $result = $this->createQuery($sql);
-            $notes = [];
+            $note = [];
             foreach ($result as $data){
                 
-                $notes[] = new Note($data);
+                $note[] = new Note($data);
             }
             $result->closeCursor();
-            return $notes;
+            return $note;
         }
 
 
@@ -34,7 +34,7 @@ class NoteDAO extends DAO
          //Permet de récupérer la moyenne  d'un jeux
         public function getScore()
         {
-          $sql = 'SELECT avg(score) FROM note INNER JOIN jeux ON jeux_id' ;
+          $sql = 'SELECT avg(score) FROM note WHERE jeux_id = ?' ;
           $result = $this->createQuery($sql);
           $score[] = new Score($data);
           $result->closeCursor();

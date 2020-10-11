@@ -13,7 +13,7 @@ class Marque extends Hydrator
     /**
      * @var string
      */
-    private $title;
+    private $name;
 
     /**
      * @var string
@@ -39,7 +39,7 @@ class Marque extends Hydrator
     //**************************Constructeur*****************/
   
      /**
-     * Article constructor.
+     * constructor.
      *
      * @param $data
      */
@@ -56,9 +56,9 @@ class Marque extends Hydrator
         return $this->id;
     }
 
-    public function getTitle()
+    public function getName()
     {
-        return $this->title;
+        return $this->name;
     }
 
     public function getLogo()
@@ -89,9 +89,9 @@ class Marque extends Hydrator
         $this->id = $id;
     }
 
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->title = $title;
+        $this->name = $name;
     }
 
     public function setLogo($logo)
