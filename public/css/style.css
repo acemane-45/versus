@@ -17,6 +17,10 @@
         text-align: center;
     }
     
+    .mon_logo {
+        width: 50%;
+    }
+    
     footer {
         position: initial;
         width: 100%;

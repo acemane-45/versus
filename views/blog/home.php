@@ -2,15 +2,13 @@
 
 
 
-<?= $this->session->show('add_comment'); ?>
-<?= $this->session->show('flag_comment'); ?>
-<?= $this->session->show('delete_comment'); ?>
-<?= $this->session->show('register'); ?>
-<?= $this->session->show('login'); ?>
-<?= $this->session->show('logout'); ?>
-<?= $this->session->show('delete_account'); ?>
-
-    
+<div id="logo">
+          <img  class="mon_logo" src="img/logo sega versus nintendo.png" alt="mon logo">
+       </div>
+       <div id="header_text" class="header_text">
+          <h1>Il y a bien longtemps, dans une galaxie lointaine…</h1>
+          <p>début des années 90, où le secteur des consoles est segmenté par deux acteurs diamétralement opposés : Nintendo et SEGA.</p>
+       </div>
 
 
         
