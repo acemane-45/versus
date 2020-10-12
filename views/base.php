@@ -5,7 +5,7 @@
     <meta name="description" content="versus" />
     <meta charset=UTF-8/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $title ?></title>
+    <title>Versus</title>
     
     <link rel="stylesheet" href="<?= SCRIPTS . 'css' . DIRECTORY_SEPARATOR . 'style.css' ?>">
     <link rel="stylesheet" href="<?= SCRIPTS . 'css' . DIRECTORY_SEPARATOR . 'app.css' ?>">

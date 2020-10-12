@@ -1,4 +1,4 @@
-<?php $this->title = 'Accueil'; ?>
+
 
 
 
@@ -8,7 +8,7 @@
        <div id="header_text" class="header_text">
           <h1>Il y a bien longtemps, dans une galaxie lointaine…</h1>
           <p>début des années 90, où le secteur des consoles est segmenté par deux acteurs diamétralement opposés : Nintendo et SEGA.</p>
-       </div>
+</div>
 
 
         
