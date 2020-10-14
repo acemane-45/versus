@@ -16,6 +16,10 @@ define('DB_PWD', '');
 $router = new Router($_GET['url']);
 
 $router->get('/', 'App\Controllers\BlogController@welcome');
+$router->get('/marque/:id', 'App\Controllers\BlogController@marque');
+$router->get('/console/:id', 'App\Controllers\BlogController@console');
+$router->get('/jeux/:id', 'App\Controllers\BlogController@jeux');
+$router->get('//:id', 'App\Controllers\BlogController@');
 
 
 try {
