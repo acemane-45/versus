@@ -4,8 +4,10 @@ namespace App\Controllers;
 
 use App\Models\Marque;
 use App\Models\Console;
+use App\Models\Jeux;
+use App\Models\Comment;
 
-class BlogController extends Controller {
+class FrontController extends Controller {
 
     public function welcome()
     {
