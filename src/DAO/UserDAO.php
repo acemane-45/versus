@@ -14,7 +14,7 @@ class UserDAO extends DAO
         $user = new User();
         $user->setId($row['id']);
         $user->setPseudo($row['pseudo']);
-        $user->setdate($row['date']);
+        $user->setCreatedAt($row['createdAt']);
         $user->setRole($row['name']);
         return $user;
     }
@@ -22,7 +22,7 @@ class UserDAO extends DAO
     //Méthode pour récupérer la liste des utilisateurs 
     public function getUsers()
     {
-        $sql = 'SELECT user.id, user.pseudo, user.date, role.name FROM user INNER JOIN role ON user.role_id = role.id ORDER BY user.id DESC';
+        $sql = 'SELECT user.id, user.pseudo, user.createdAt, role.name FROM user INNER JOIN role ON user.role_id = role.id ORDER BY user.id DESC';
         $result = $this->createQuery($sql);
         $users = [];
         foreach ($result as $row){
@@ -36,7 +36,7 @@ class UserDAO extends DAO
     public function register(Parameter $post)
     {
         $this->checkUser($post);
-        $sql = 'INSERT INTO user (pseudo, password, date, role_id) VALUES (?, ?, NOW(), ?)';
+        $sql = 'INSERT INTO user (pseudo, password, createdAt, role_id) VALUES (?, ?, NOW(), ?)';
         $this->createQuery($sql, [$post->get('pseudo'), password_hash($post->get('password'), PASSWORD_BCRYPT), 2]);
     }
 

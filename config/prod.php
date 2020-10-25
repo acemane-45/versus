@@ -1,0 +1,9 @@
+<?php
+//parametre connexion a la bdd
+
+const HOST = 'localhost';
+const DB_NAME = '';
+const CHARSET = 'utf8';
+const DB_HOST = 'mysql:host='.HOST.';dbname='.DB_NAME.';charset='.CHARSET;
+const DB_USER = '';
+const DB_PASS = '';

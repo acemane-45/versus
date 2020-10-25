@@ -2,7 +2,7 @@
 //parametre connexion a la bdd
 
 const HOST = 'localhost';
-const DB_NAME = 'projet-5';
+const DB_NAME = 'v2';
 const CHARSET = 'utf8';
 const DB_HOST = 'mysql:host='.HOST.';dbname='.DB_NAME.';charset='.CHARSET;
 const DB_USER = 'root';

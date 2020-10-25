@@ -22,9 +22,9 @@ class User
     private $password;
 
     /**
-     * @var \DateTime
+     * @var \Date
      */
-    private $date;
+    private $createdAt;
 
     /**
      * @var string
@@ -53,9 +53,9 @@ class User
         return $this->password;
     }
 
-    public function getDate()
+    public function getCreatedAt()
     {
-        return $this->date;
+        return $this->createdAt;
     }
 
     public function getRole()
@@ -80,9 +80,9 @@ class User
         $this->pass = $password;
     }
 
-    public function setDate($date)
+    public function setCreatedAt($createdAt)
     {
-        $this->date = $date;
+        $this->createdAt = $createdAt;
     }
 
     public function setRole($role)
