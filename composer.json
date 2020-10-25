@@ -1,0 +1,14 @@
+{
+    "name": "acema/versus",
+    "authors": [{
+        "name": "acemane-45",
+        "email": "acemane666@gmail.com"
+    }],
+    "autoload": {
+        "psr-4": {
+            "App\\config\\": "config/",
+            "App\\src\\": "src/"
+        }
+    },
+    "require": {}
+}
