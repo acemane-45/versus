@@ -21,9 +21,9 @@ $createdAt = isset($jeux) && $jeux->getCreatedAt() ? htmlspecialchars($jeux->get
     <label for="jaquette">Jaquette</label><br>
     <input type="text" id="jaquette" name="jaquette" value="<?= isset($post) ? html_entity_decode($post->get('jaquette')): ''; ?>"><br>
     <?= isset($errors['jaquette']) ? $errors['jaquette'] : ''; ?>
-    <label for="jaquette">Extrait</label><br>
+    <label for="extrait">Extrait</label><br>
     <input type="text" id="extrait" name="extrait" value="<?= isset($post) ? html_entity_decode($post->get('extrait')): ''; ?>"><br>
-    <?= isset($errors['infos']) ? $errors['extrait'] : ''; ?>
+    <?= isset($errors['extrait']) ? $errors['extrait'] : ''; ?>
     <label for="infos">Infos</label><br>
     <textarea id="myText" name="infos"><?= isset($post) ? html_entity_decode($post->get('infos')): ''; ?></textarea><br>
     <?= isset($errors['infos']) ? $errors['infos'] : ''; ?>

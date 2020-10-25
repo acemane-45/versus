@@ -29,11 +29,11 @@
    
     <tr>
       <th scope="row">2</th>
-      <td><a class="btn btn-primary" href="../public/index.php?route=editMarque&marqueId=<---------->" role="button">Modifier</a></td>
+      <td><a class="btn btn-primary" href="../public/index.php?route=editJeux&jeuxId=<---------->" role="button">Modifier</a></td>
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td><a class="btn btn-primary" href="../public/index.php?route=DeleteMarque&marqueId=<------>" role="button">Suprimer</a></td>
+      <td><a class="btn btn-primary" href="../public/index.php?route=DeleteJeux&jeuxId=<------>" role="button">Suprimer</a></td>
     </tr>
   </tbody>
 </table>

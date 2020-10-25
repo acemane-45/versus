@@ -5,12 +5,12 @@ namespace App\src\constraint;
 class Validation
 {
 
-    //gestion de la classe ArticleValidation
+    //gestion de la classe JeuxValidation
     public function validate($data, $name)
     {
-        if($name === 'Article') {
-            $articleValidation = new ArticleValidation();
-            $errors = $articleValidation->check($data);
+        if($name === 'Jeux') {
+            $jeuxValidation = new JeuxValidation();
+            $errors = $jeuxValidation->check($data);
             return $errors;
         }
         //gestion de la classe CommentValidation 

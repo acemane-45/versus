@@ -2,7 +2,7 @@
 
 namespace App\src\model;
 
-class Comment
+class Comment extends Hydrator
 
 {
  //*************************Attributs*******************/

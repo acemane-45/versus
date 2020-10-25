@@ -2,7 +2,7 @@
 
 namespace App\src\model;
 
-class Jeux
+class Jeux extends Hydrator
 
 {
 //*************************Attributs*******************/
@@ -42,18 +42,7 @@ class Jeux
     private $createdAt;
 
 
-    //**************************Constructeur*****************/
-  
-     /**
-     * Article constructor.
-     *
-     * @param $data
-     */
-    public function __construct($data)
-    {
-        $this->hydrate($data);
-    }
- 
+    
    
     //**************************Getters*********************/
 
