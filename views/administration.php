@@ -1,46 +1,57 @@
 <?php $this->title = 'Administration'; ?>
 
 
-<?= $this->session->show('add_jeux'); ?>
-<?= $this->session->show('edit_jeux'); ?>
-<?= $this->session->show('delete_jeux'); ?>
+<?= $this->session->show('add_article'); ?>
+<?= $this->session->show('edit_article'); ?>
+<?= $this->session->show('delete_article'); ?>
 <?= $this->session->show('unflag_comment'); ?>
 <?= $this->session->show('delete_comment'); ?>
 <?= $this->session->show('delete_user'); ?>
 
-<h1>liste des jeux</h1>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Suprimer</th>
-      <th scope="col">Modifier</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-   
+
+<h2 class="tire_admin">Articles</h2>
+<div id="article_admin" class="article_admin">
+<table>
+    <tr id="info_article" class="info_article">
       
-      <th scope="row">1</th>
-      
-      <td></td>
-      
+        <td>Titre</td>
+        <td>Contenu</td>
+        <td>Actions</td>
     </tr>
-   
-    <tr>
-      <th scope="row">2</th>
-      <td><a class="btn btn-primary" href="../public/index.php?route=editJeux&jeuxId=<---------->" role="button">Modifier</a></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td><a class="btn btn-primary" href="../public/index.php?route=DeleteJeux&jeuxId=<------>" role="button">Suprimer</a></td>
-    </tr>
-  </tbody>
+    <?php
+    foreach ($articles as $article)
+    {
+        ?>
+        <tr>
+            
+            <td class="btn"><a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?></a></td>
+            <td class="list_article"> <?php
+                                 if(strlen($article->getContent()) <=100)
+                               {
+                                 $content = $article->getContent();
+                               }
+                               else
+                              {
+
+                              $start = substr($article->getContent(), 0, 100);
+                              $start = substr($start, 0, strrpos($start, ' ')) .'[...]';
+                              $content = $start;
+                             }
+                             echo $content; 
+                             ?>
+            </td>
+            
+            <td class="action_admin">
+                <a href="../public/index.php?route=editArticle&articleId=<?= $article->getId(); ?>">Modifier</a>
+                <a href="../public/index.php?route=deleteArticle&articleId=<?= $article->getId(); ?>">Supprimer</a>
+            </td>
+        </tr>
+        <?php
+    }
+    ?>
 </table>
 
-  
-
-<a class="news" href="../public/index.php?route=addJeux">Nouveau Jeux</a>
+<a class="news" href="../public/index.php?route=addArticle">Nouvel article</a>
 
 </div>
 <div id="comment_admin" class="comment_admin">
@@ -59,7 +70,7 @@
         ?>
         <tr>
             <td id="id_com"><?= htmlspecialchars($comment->getId());?></td>
-         <td><?= htmlspecialchars($comment->getPseudo());?></td>
+            <td><?= htmlspecialchars($comment->getPseudo());?></td>
             <td><?= substr(htmlspecialchars($comment->getContent()), 0, 150);?></td>
             <td id="date_com">Créé le : <?= htmlspecialchars($comment->getCreatedAt());?></td>
             <td id="action_com">

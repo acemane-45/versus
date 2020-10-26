@@ -3,15 +3,15 @@
 namespace App\src\model;
 
 class Comment extends Hydrator
-
 {
- //*************************Attributs*******************/
-/**
+    //*************************Attributs*******************/
+
+    /**
      * @var int
      */
     private $id;
 
-      /**
+    /**
      * @var string
      */
     private $pseudo;
@@ -30,9 +30,10 @@ class Comment extends Hydrator
      * @var bool
      */
     private $flag;
- 
-    //**************************Constructeur*****************/
-   /**
+
+    //*************************Constructeur****************/
+
+    /**
      * Comment constructor.
      *
      * @param $data
@@ -41,9 +42,13 @@ class Comment extends Hydrator
     {
         $this->hydrate($data);
     }
-    
 
     //*************************Getters*********************/
+
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getPseudo()
     {
@@ -66,9 +71,9 @@ class Comment extends Hydrator
     }
 
 
-     //*************************Setters*********************/
-
-     public function setId($id)
+    //*************************Setters*********************/
+  
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -92,4 +97,5 @@ class Comment extends Hydrator
     {
         $this->flag = $flag;
     }
+
 }

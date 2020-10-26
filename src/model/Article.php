@@ -2,26 +2,20 @@
 
 namespace App\src\model;
 
-class Jeux extends Hydrator
-
+class Article extends Hydrator
 {
-//*************************Attributs*******************/
+    //*************************Attributs*******************/
     /**
      * @var int
      */
     private $id;
-
-     /**
-     * @var string
-     */
-    private $console;
 
     /**
      * @var string
      */
     private $title;
 
-     /**
+    /**
      * @var string
      */
     private $jaquette;
@@ -29,31 +23,41 @@ class Jeux extends Hydrator
     /**
      * @var string
      */
-    private $infos;  
+    private $demo;
 
     /**
      * @var string
      */
-    private $extrait;
+    private $content;  
+    /**
+     * @var string
+     */
+    private $author;
     
     /**
-     * @var \Date
+     * @var \DateTime
      */
     private $createdAt;
 
 
-    
+    //**************************Constructeur*****************/
+  
+     /**
+     * Article constructor.
+     *
+     * @param $data
+     */
+    public function __construct($data)
+    {
+        $this->hydrate($data);
+    }
+ 
    
     //**************************Getters*********************/
 
     public function getId()
     {
         return $this->id;
-    }
-
-    public function getConsole()
-    {
-        return $this->console;
     }
 
     public function getTitle()
@@ -66,14 +70,19 @@ class Jeux extends Hydrator
         return $this->jaquette;
     }
 
-    public function getInfos()
+    public function getDemo()
     {
-        return $this->infos;
+        return $this->demo;
     }
 
-    public function getExtrait()
+    public function getContent()
     {
-        return $this->extrait;
+        return $this->content;
+    }
+
+    public function getAuthor()
+    {
+        return $this->author;
     }
 
     public function getCreatedAt()
@@ -89,11 +98,6 @@ class Jeux extends Hydrator
         $this->id = $id;
     }
 
-    public function setConsole($console)
-    {
-        $this->console = $console;
-    }
-
     public function setTitle($title)
     {
         $this->title = $title;
@@ -104,19 +108,25 @@ class Jeux extends Hydrator
         $this->jaquette = $jaquette;
     }
 
-    public function setInfos($infos)
+    public function setDemo($demo)
     {
-        $this->infos = $infos;
+        $this->demo = $demo;
+    }
+
+    public function setContent($content)
+    {
+        $this->content = $content;
     }
    
-    public function setExtrait($extrait)
+    public function setAuthor($author)
     {
-        $this->extrait = $extrait;
+        $this->author = $author;
     }
    
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
     }
+
     
 }

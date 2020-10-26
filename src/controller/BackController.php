@@ -34,81 +34,82 @@ class BackController extends Controller
     {
         if($this->checkAdmin()) 
         {
-          $jeux = $this->jeuxDAO->getJeux();
+          $articles = $this->articleDAO->getArticles();
+          $articles = $this->articleDAO->getArticles();
           $comments = $this->commentDAO->getFlagComments();
           $users = $this->userDAO->getUsers();
           return $this->view->render('administration', [
-            'jeux' => $jeux,
+            'articles' => $articles,
             'comments' => $comments,
             'users' => $users
            ]);
         }
     }
     
-    //Méthode pour ajoutée un jeux
-    public function addJeux(Parameter $post)
+    //Méthode pour ajoutée un article
+    public function addArticle(Parameter $post)
     {
         if($this->checkAdmin()) 
         {
           if($post->get('submit'))
            {
-              $errors = $this->validation->validate($post, 'Jeux');
+              $errors = $this->validation->validate($post, 'Article');
               if(!$errors)
                {
-                $this->jeuxDAO->addJeux($post, $this->session->get('id'));
-                $this->session->set('add_jeux', 'Le nouveau jeux a bien été ajouté');
+                $this->articleDAO->addArticle($post, $this->session->get('id'));
+                $this->session->set('add_article', 'Le nouvel article a bien été ajouté');
                 header('Location: ../public/index.php?route=administration');
                }
-              return $this->view->render('add_jeux', [
+              return $this->view->render('add_article', [
                 'post' => $post,
                 'errors' => $errors
               ]);
             }
-          return $this->view->render('add_jeux');
+          return $this->view->render('add_article');
         }
     }
 
-    //Méthode pour modifier un jeux
-    public function editJeux(Parameter $post, $jeuxId)
+    //Méthode pour modifier un article
+    public function editArticle(Parameter $post, $articleId)
     {
         if($this->checkAdmin()) 
         {
-           $article = $this->jeuxDAO->getJeux($jeuxId);
+           $article = $this->articleDAO->getArticle($articleId);
            if($post->get('submit'))
             {
-               $errors = $this->validation->validate($post, 'Jeux');
+               $errors = $this->validation->validate($post, 'Article');
                if(!$errors) 
                {
-                 $this->jeuxDAO->editJeux($post, $jeuxId, $this->session->get('id'));
-                 $this->session->set('edit_jeux', 'Le jeux a bien été modifié');
+                 $this->articleDAO->editArticle($post, $articleId, $this->session->get('id'));
+                 $this->session->set('edit_article', 'L\' article a bien été modifié');
                  header('Location: ../public/index.php?route=administration');
                 }
-                return $this->view->render('edit_jeux', [
+                return $this->view->render('edit_article', [
                 'post' => $post,
                 'errors' => $errors
                  ]);
  
             }
-          $post->set('id', $jeux->getId());
-          $post->set('title', $jeux->getTitle());
+          $post->set('id', $article->getId());
+          $post->set('title', $article->getTitle());
           $post->set('jaquette', $article->getJaquette());
-          $post->set('createdAt', $article->getCreatedAt());
-          $post->set('infos', $article->getInfos());
-          $post->set('extrait', $article->getExtrait());
+          $post->set('demo', $article->getDemo());
+          $post->set('content', $article->getContent());
+       
 
-          return $this->view->render('edit_jeux', [
+          return $this->view->render('edit_article', [
             'post' => $post
           ]);
         }
     }
 
      //Méthode pour suprimer un article
-    public function deleteJeux($jeuxId)
+    public function deleteArticle($articleId)
     {
         if($this->checkAdmin()) 
         {
-        $this->articleDAO->deleteJeux($jeuxId);
-        $this->session->set('delete_jeux', 'Le jeux a bien été supprimé');
+        $this->articleDAO->deleteArticle($articleId);
+        $this->session->set('delete_article', 'L\' article a bien été supprimé');
         header('Location: ../public/index.php?route=administration');
         }
     }
@@ -197,5 +198,5 @@ class BackController extends Controller
             $this->session->set($param, 'Votre compte a bien été supprimé');
         }
         header('Location: ../public/index.php');
-    } 
+    }
 }

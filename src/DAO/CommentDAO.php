@@ -7,59 +7,59 @@ use App\src\model\Comment;
 
 class CommentDAO extends DAO
 {
-//rÃ©cupÃ¨re les commentaire d'un article
-public function getCommentsJeux($jeuxId)
-{
-    $sql = 'SELECT id, pseudo, content, createdAt, flag FROM comment WHERE jeux_id = ? ORDER BY createdAt DESC';
-    $result = $this->createQuery($sql, [$jeuxId]);
-    $comments = [];
-    foreach ($result as $data) {
-        $comments[] = new Comment($data);
+   
+
+    //récupère les commentaire d'un article
+    public function getCommentsFromArticle($articleId)
+    {
+        $sql = 'SELECT id, pseudo, content, createdAt, flag FROM comment WHERE article_id = ? ORDER BY createdAt DESC';
+        $result = $this->createQuery($sql, [$articleId]);
+        $comments = [];
+        foreach ($result as $data) {
+            $comments[] = new Comment($data);
+        }
+      
+        return $comments;
     }
   
-    return $comments;
-}
-
-//ajout commentaire
-public function addComment(Parameter $post, $jeuxId)
-{
-    $sql = 'INSERT INTO comment (pseudo, content, createdAt, jeux_id) VALUES (?, ?, NOW(), ?)';
-    $this->createQuery($sql, [$post->get('pseudo'), $post->get('content'), $jeuxId]);
-}
-
-//signalement commentaire
-public function flagComment($commentId)
-{
-    $sql = 'UPDATE comment SET flag = ? WHERE id = ?';
-    $this->createQuery($sql, [1, $commentId]);
-}
-
-//designalisé un commentaire
-public function unflagComment($commentId)
-{
-    $sql = 'UPDATE comment SET flag = ? WHERE id = ?';
-    $this->createQuery($sql, [0, $commentId]);
-}
-
- //suprimÃ© un commentaire
-public function deleteComment($commentId)
-{
-    $sql = 'DELETE FROM comment WHERE id = ?';
-    $this->createQuery($sql, [$commentId]);
-}
-
-  //récupére la liste de tous commentaires
-public function getFlagComments()
-{
-    $sql = 'SELECT id, pseudo, content, createdAt, flag FROM comment WHERE flag = ? ORDER BY createdAt DESC';
-    $result = $this->createQuery($sql, [1]);
-    $comments = [];
-    foreach ($result as $data) {
-        $comments[] = new Comment($data);
+    //ajout commentaire
+    public function addComment(Parameter $post, $articleId)
+    {
+        $sql = 'INSERT INTO comment (pseudo, content, createdAt, article_id) VALUES (?, ?, NOW(), ?)';
+        $this->createQuery($sql, [$post->get('pseudo'), $post->get('content'), $articleId]);
     }
-    
-    return $comments;
-}
 
-    
+    //signalement commentaire
+    public function flagComment($commentId)
+    {
+        $sql = 'UPDATE comment SET flag = ? WHERE id = ?';
+        $this->createQuery($sql, [1, $commentId]);
+    }
+
+    //designalis� un commentaire
+    public function unflagComment($commentId)
+    {
+        $sql = 'UPDATE comment SET flag = ? WHERE id = ?';
+        $this->createQuery($sql, [0, $commentId]);
+    }
+
+     //suprimé un commentaire
+    public function deleteComment($commentId)
+    {
+        $sql = 'DELETE FROM comment WHERE id = ?';
+        $this->createQuery($sql, [$commentId]);
+    }
+
+      //r�cup�re la liste de tous commentaires
+    public function getFlagComments()
+    {
+        $sql = 'SELECT id, pseudo, content, createdAt, flag FROM comment WHERE flag = ? ORDER BY createdAt DESC';
+        $result = $this->createQuery($sql, [1]);
+        $comments = [];
+        foreach ($result as $data) {
+            $comments[] = new Comment($data);
+        }
+        
+        return $comments;
+    }
 }

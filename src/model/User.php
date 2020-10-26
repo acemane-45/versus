@@ -22,7 +22,7 @@ class User
     private $password;
 
     /**
-     * @var \Date
+     * @var \DateTime
      */
     private $createdAt;
 
@@ -77,7 +77,7 @@ class User
 
     public function setPassword($password)
     {
-        $this->pass = $password;
+        $this->password = $password;
     }
 
     public function setCreatedAt($createdAt)

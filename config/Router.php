@@ -28,24 +28,24 @@ class Router
         try{
             if(isset($route))
             {
-                if($route === 'jeux'){
-                    $this->frontController->jeux($this->request->getGet()->get('jeuxId'));
+                if($route === 'article'){
+                    $this->frontController->article($this->request->getGet()->get('articleId'));
                 }
-                elseif ($route === 'listeJeux'){
-                    $this->frontController->listeJeux($this->request->getGet()->get('jeuxId')); 
+                elseif ($route === 'listarticles'){
+                    $this->frontController->listarticles($this->request->getGet()->get('articleId')); 
                 } 
                
-                elseif ($route === 'addJeux'){
-                    $this->backController->addJeux($this->request->getPost());
+                elseif ($route === 'addArticle'){
+                    $this->backController->addArticle($this->request->getPost());
                 }
-                elseif ($route === 'editJeux'){
-                    $this->backController->editJeux($this->request->getPost(), $this->request->getGet()->get('jeuxId'));
+                elseif ($route === 'editArticle'){
+                    $this->backController->editArticle($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }
-                elseif($route === 'deleteJeux'){
-                    $this->backController->deleteJeux($this->request->getGet()->get('jeuxId'));
+                elseif($route === 'deleteArticle'){
+                    $this->backController->deleteArticle($this->request->getGet()->get('articleId'));
                 }
                 elseif($route === 'addComment'){
-                    $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('jeuxId'));
+                    $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }
                 elseif($route === 'flagComment'){
                     $this->frontController->flagComment($this->request->getGet()->get('commentId'));
@@ -92,5 +92,5 @@ class Router
         {
             $this->errorController->errorServer();
         }
-    } 
- }
+    }
+}

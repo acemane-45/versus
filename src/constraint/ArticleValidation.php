@@ -3,7 +3,7 @@
 namespace App\src\constraint;
 use App\config\Parameter;
 
-class JeuxValidation extends Validation
+class ArticleValidation extends Validation
 {
     private $errors = [];
     private $constraint;
@@ -26,11 +26,7 @@ class JeuxValidation extends Validation
     // Vérifie chaque champ 
     private function checkField($name, $value)
     {
-        if($name === 'console') {
-            $error = $this->checkConsole($name, $value);
-            $this->addError($name, $error);
-        }
-        elseif ($name === 'title') {
+        if($name === 'title') {
             $error = $this->checkTitle($name, $value);
             $this->addError($name, $error);
         }
@@ -38,19 +34,15 @@ class JeuxValidation extends Validation
             $error = $this->checkJaquette($name, $value);
             $this->addError($name, $error);
         }
-        elseif ($name === 'infos') {
-            $error = $this->checkInfos($name, $value);
+        elseif ($name === 'demo') {
+            $error = $this->checkDemo($name, $value);
             $this->addError($name, $error);
         }
-        elseif ($name === 'extrait') {
-            $error = $this->checkExtrait($name, $value);
+        elseif ($name === 'content') {
+            $error = $this->checkContent($name, $value);
             $this->addError($name, $error);
         }
-        elseif ($name === 'createdAt') {
-            $error = $this->checkCreatedAt($name, $value);
-            $this->addError($name, $error);
-        }
-             
+        
     }
 
     //Ajoute une erreur si un des champs n'est pas valide
@@ -59,19 +51,6 @@ class JeuxValidation extends Validation
             $this->errors += [
                 $name => $error
             ];
-        }
-    }
-
-    private function checkConsole($name, $value)
-    {
-        if($this->constraint->notBlank($name, $value)) {
-            return $this->constraint->notBlank('console', $value);
-        }
-        if($this->constraint->minLength($name, $value, 2)) {
-            return $this->constraint->minLength('console', $value, 2);
-        }
-        if($this->constraint->maxLength($name, $value, 255)) {
-            return $this->constraint->maxLength('console', $value, 255);
         }
     }
 
@@ -101,39 +80,28 @@ class JeuxValidation extends Validation
         }
     }
 
-    private function checkInfos($name, $value)
+    private function checkDemo($name, $value)
     {
         if($this->constraint->notBlank($name, $value)) {
-            return $this->constraint->notBlank('infos', $value);
+            return $this->constraint->notBlank('demo', $value);
+           
         }
         if($this->constraint->minLength($name, $value, 2)) {
-            return $this->constraint->minLength('infos', $value, 2);
+            return $this->constraint->minLength('demo', $value, 2);
         }
         if($this->constraint->maxLength($name, $value, 255)) {
-            return $this->constraint->maxLength('infos', $value, 255);
+            return $this->constraint->maxLength('demo', $value, 255);
         }
     }
+    
 
-    private function checkExtrait($name, $value)
+    private function checkContent($name, $value)
     {
         if($this->constraint->notBlank($name, $value)) {
-            return $this->constraint->notBlank('extrait', $value);
+            return $this->constraint->notBlank('contenu', $value);//checkTitle, checkContent et checkAuthor font appels aux différentes contraines créées.
         }
         if($this->constraint->minLength($name, $value, 2)) {
-            return $this->constraint->minLength('extrait', $value, 2);
-        }
-        if($this->constraint->maxLength($name, $value, 255)) {
-            return $this->constraint->maxLength('extrait', $value, 255);
-        }
-    }
-
-    private function checkCreatedAt($name, $value)
-    {
-        if($this->constraint->notBlank($name, $value)) {
-            return $this->constraint->notBlank('createdAt', $value);//checkTitle, checkContent et checkAuthor font appels aux différentes contraines créées.
-        }
-        if($this->constraint->minLength($name, $value, 2)) {
-            return $this->constraint->minLength('createdAt', $value, 2);
+            return $this->constraint->minLength('contenu', $value, 2);
         }
     }
 
