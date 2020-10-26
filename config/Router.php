@@ -31,8 +31,14 @@ class Router
                 if($route === 'article'){
                     $this->frontController->article($this->request->getGet()->get('articleId'));
                 }
+                elseif ($route === 'articles'){
+                    $this->frontController->articlepagin($this->request->getGet()->get('articleId')); 
+                } 
                 elseif ($route === 'listarticles'){
                     $this->frontController->listarticles($this->request->getGet()->get('articleId')); 
+                } 
+                elseif ($route === 'jeux'){
+                    $this->frontController->video(); 
                 } 
                
                 elseif ($route === 'addArticle'){
@@ -44,6 +50,15 @@ class Router
                 elseif($route === 'deleteArticle'){
                     $this->backController->deleteArticle($this->request->getGet()->get('articleId'));
                 }
+                elseif ($route === 'addContenu'){
+                    $this->backController->addContenu($this->request->getPost(), $this->request->getGet()->get('articleId'));
+                }
+                elseif ($route === 'editContenu'){
+                    $this->backController->editContenu($this->request->getPost(), $this->request->getGet()->get('articleId'));
+                }
+                elseif($route === 'deleteContenu'){
+                    $this->backController->deleteContenu($this->request->getGet()->get('contenuId'));
+                }   
                 elseif($route === 'addComment'){
                     $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }

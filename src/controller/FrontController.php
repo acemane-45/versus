@@ -8,8 +8,20 @@ class FrontController extends Controller
 {
     public function home()
     {
+       
+        return $this->view->render('home');
+    }
+
+    public function video()
+    {
+       
+        return $this->view->render('jeux');
+    }
+
+    public function articlepagin()
+    {
         $articles = $this->articleDAO->getArticlespagin();
-        return $this->view->render('home', [
+        return $this->view->render('article', [
            'articles' => $articles
         ]);
     }

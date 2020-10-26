@@ -18,16 +18,6 @@ class Article extends Hydrator
     /**
      * @var string
      */
-    private $jaquette;
-
-    /**
-     * @var string
-     */
-    private $demo;
-
-    /**
-     * @var string
-     */
     private $content;  
     /**
      * @var string
@@ -65,16 +55,6 @@ class Article extends Hydrator
         return $this->title;
     }
 
-    public function getJaquette()
-    {
-        return $this->jaquette;
-    }
-
-    public function getDemo()
-    {
-        return $this->demo;
-    }
-
     public function getContent()
     {
         return $this->content;
@@ -101,16 +81,6 @@ class Article extends Hydrator
     public function setTitle($title)
     {
         $this->title = $title;
-    }
-
-    public function setJaquette($jaquette)
-    {
-        $this->jaquette = $jaquette;
-    }
-
-    public function setDemo($demo)
-    {
-        $this->demo = $demo;
     }
 
     public function setContent($content)

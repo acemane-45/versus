@@ -30,14 +30,6 @@ class ArticleValidation extends Validation
             $error = $this->checkTitle($name, $value);
             $this->addError($name, $error);
         }
-        elseif ($name === 'jaquette') {
-            $error = $this->checkJaquette($name, $value);
-            $this->addError($name, $error);
-        }
-        elseif ($name === 'demo') {
-            $error = $this->checkDemo($name, $value);
-            $this->addError($name, $error);
-        }
         elseif ($name === 'content') {
             $error = $this->checkContent($name, $value);
             $this->addError($name, $error);
@@ -66,34 +58,6 @@ class ArticleValidation extends Validation
             return $this->constraint->maxLength('titre', $value, 255);
         }
     }
-
-    private function checkJaquette($name, $value)
-    {
-        if($this->constraint->notBlank($name, $value)) {
-            return $this->constraint->notBlank('jaquette', $value);
-        }
-        if($this->constraint->minLength($name, $value, 2)) {
-            return $this->constraint->minLength('jaquette', $value, 2);
-        }
-        if($this->constraint->maxLength($name, $value, 255)) {
-            return $this->constraint->maxLength('jaquette', $value, 255);
-        }
-    }
-
-    private function checkDemo($name, $value)
-    {
-        if($this->constraint->notBlank($name, $value)) {
-            return $this->constraint->notBlank('demo', $value);
-           
-        }
-        if($this->constraint->minLength($name, $value, 2)) {
-            return $this->constraint->minLength('demo', $value, 2);
-        }
-        if($this->constraint->maxLength($name, $value, 255)) {
-            return $this->constraint->maxLength('demo', $value, 255);
-        }
-    }
-    
 
     private function checkContent($name, $value)
     {

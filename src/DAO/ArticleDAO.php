@@ -12,7 +12,7 @@ class ArticleDAO extends DAO
     public function getArticles()
     {
 
-        $sql = 'SELECT id, title, jaquette, demo, content, createdAt FROM article ORDER BY id DESC ';
+        $sql = 'SELECT id, title, content, createdAt FROM article ORDER BY id DESC ';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $data){
@@ -31,7 +31,7 @@ class ArticleDAO extends DAO
     {
        
         
-        $sql = 'SELECT id, title, jaquette FROM article ORDER BY id DESC LIMIT 3';
+        $sql = 'SELECT id, title, content, createdAt FROM article ORDER BY id DESC LIMIT 3';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $data){
@@ -47,7 +47,7 @@ class ArticleDAO extends DAO
     public function getArticle( $articleId)
     {
       
-        $sql = 'SELECT id, title, jaquette, demo, content, createdAt FROM article WHERE id = ?';      
+        $sql = 'SELECT id, title, content, createdAt FROM article WHERE id = ?';      
         $result = $this->createQuery($sql, [$articleId]);
       
         foreach ($result as $data){
@@ -63,19 +63,17 @@ class ArticleDAO extends DAO
     //Permet d'ajouter un article dans la BDD
     public function addArticle(Parameter $post, $userId)
     {
-        $sql = 'INSERT INTO article (title, jaquette, demo, content, createdAt, user_id) VALUES (?, ?, NOW(), ?)';
-        $this->createQuery($sql, [$post->get('title'), $post->get('jaquette'), $post->get('demo'), $post->get('content'), $userId]);
+        $sql = 'INSERT INTO article (title, content, createdAt, user_id) VALUES (?, ?, NOW(), ?)';
+        $this->createQuery($sql, [$post->get('title'), $post->get('content'), $userId]);
     }
     
 
     //Permet de modifier un article dans la BDD
     public function editArticle(Parameter $post, $articleId)
     {
-        $sql = 'UPDATE article SET title=:title, jaquette=:jaquette, demo=:demo, content=:content WHERE id=:articleId';
+        $sql = 'UPDATE article SET title=:title, content=:content WHERE id=:articleId';
         $this->createQuery($sql, [
             'title' => $post->get('title'),
-            'jaquette' => $post->get('jaquette'),
-            'demo' => $post->get('demo'),
             'content' => $post->get('content'),
            
             'articleId' => $articleId
@@ -85,6 +83,7 @@ class ArticleDAO extends DAO
     //Permet de suprimer un article et son commentaire dans la BDD
     public function deleteArticle($articleId)
     {
+       
         $sql = 'DELETE FROM comment WHERE article_id = ?';//commentaire
         $this->createQuery($sql, [$articleId]);
         $sql = 'DELETE FROM article WHERE id = ?';//article

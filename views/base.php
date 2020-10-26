@@ -23,7 +23,9 @@
     <div id = "menu1"class="menu ">
       <ul>    
         <li class="btn"><a href="../public/index.php">Accueil</a></li>
+        <li class="btn"><a href="../public/index.php?route=articles">Articles</a></li>
         <li class="btn"><a href="../public/index.php?route=listarticles">liste des articles</a></li>
+        <li class="btn"><a href="../public/index.php?route=jeux">Video de jeux</a></li>
 
          <?php
            if ($this->session->get('pseudo')) {
@@ -51,14 +53,18 @@
 
         <div class="titre">
 
-           <h2>Un billet pour l'ALASKA</h2>
-           <h2>Bienvenue sur mon blog</h2>
+        <div class="contenu">
+          <h3>Il y a bien longtemps, dans une galaxie lointaine…</h3>
+          <p>début des années 90, où le secteur des consoles est segmenté par deux acteurs diamétralement opposés : Nintendo et SEGA.</p>
+       </div>
+       </br>
+  
 
            <hr>
         </div>
     </div>
     </header>
-
+    <h3>Etes-vous Sonic ou Mario ?</h3>
     <div id="content">
     
    
@@ -67,8 +73,7 @@
     </div>
     <footer>
   
-     <p>Projet 4 DWJ OpenClassRooms  </p>
-     <p> 2020 Tous droits réservés.</p>
+  
     
     </footer>
 </body>

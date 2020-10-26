@@ -34,13 +34,12 @@ class BackController extends Controller
     {
         if($this->checkAdmin()) 
         {
-          $articles = $this->articleDAO->getArticles();
-          $articles = $this->articleDAO->getArticles();
-          $comments = $this->commentDAO->getFlagComments();
+        $articles = $this->articleDAO->getArticles();  
+        $comments = $this->commentDAO->getFlagComments();
           $users = $this->userDAO->getUsers();
           return $this->view->render('administration', [
             'articles' => $articles,
-            'comments' => $comments,
+           'comments' => $comments,           
             'users' => $users
            ]);
         }
@@ -92,10 +91,8 @@ class BackController extends Controller
             }
           $post->set('id', $article->getId());
           $post->set('title', $article->getTitle());
-          $post->set('jaquette', $article->getJaquette());
-          $post->set('demo', $article->getDemo());
           $post->set('content', $article->getContent());
-       
+          $post->set('author', $article->getAuthor());
 
           return $this->view->render('edit_article', [
             'post' => $post
@@ -113,6 +110,7 @@ class BackController extends Controller
         header('Location: ../public/index.php?route=administration');
         }
     }
+    
     //Méthode pour suprimer un commentaire
     public function deleteComment($commentId)
     {
