@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <title><?= $title ?></title>
-    <meta name="description" content="Billet simple pour l'Alaska Un roman de Jean Forteroche" />
+    <meta name="description" content="The Game" />
     <meta charset=UTF-8/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href ="css/style.css" rel="stylesheet" type="text/css" >
@@ -64,7 +64,7 @@
         </div>
     </div>
     </header>
-    <h3>Etes-vous Sonic ou Mario ?</h3>
+   
     <div id="content">
     
    
