@@ -41,6 +41,22 @@ class ArticleDAO extends DAO
         $result->closeCursor();
         return $articles;
     }
+//pagination
+    //Permet de récupérer les 5 dernier articles pour la vue admin
+    public function getArticlespagin2()
+    {
+       
+        
+        $sql = 'SELECT id, title, content, createdAt FROM article ORDER BY id DESC LIMIT 5';
+        $result = $this->createQuery($sql);
+        $articles = [];
+        foreach ($result as $data){
+            
+            $articles[] = new Article($data);
+        }
+        $result->closeCursor();
+        return $articles;
+    }
     
     
     //Permet de recupérer un article

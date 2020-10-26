@@ -34,7 +34,7 @@ class BackController extends Controller
     {
         if($this->checkAdmin()) 
         {
-        $articles = $this->articleDAO->getArticles();  
+        $articles = $this->articleDAO->getArticlespagin2();  
         $comments = $this->commentDAO->getFlagComments();
           $users = $this->userDAO->getUsers();
           return $this->view->render('administration', [
@@ -110,7 +110,7 @@ class BackController extends Controller
         header('Location: ../public/index.php?route=administration');
         }
     }
-    
+
     //Méthode pour suprimer un commentaire
     public function deleteComment($commentId)
     {

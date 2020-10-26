@@ -18,6 +18,7 @@
         <td>Contenu</td>
         <td>Actions</td>
     </tr>
+  
     <?php
     foreach ($articles as $article)
     {
