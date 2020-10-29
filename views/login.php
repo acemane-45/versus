@@ -9,5 +9,5 @@
         <input type="password" id="password" name="password"><br>
         <input type="submit" value="Connexion" id="submit" name="submit">
     </form>
-    
+
 </div>

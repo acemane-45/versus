@@ -1,8 +1,6 @@
 <?php $this->title = "Modifier l'article"; ?>
 
-
-    <div>
+<div>
     <?php include('form_article.php');?>
-    
-   
+
 </div>

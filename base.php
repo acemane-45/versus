@@ -4,11 +4,9 @@
 <head>
     <title><?= $title ?></title>
     <meta name="description" content="The Game" />
-    <meta charset=UTF-8>
+    <meta charset=UTF-8 />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.tiny.cloud/1/0wbmvo8vn0e8rwzz6wz60khgj1e86n1soo6sz9wjf6qtdaer/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>
     <script>
@@ -21,7 +19,9 @@
 </head>
 
 <body>
+
     <header>
+
         <div id="menu1" class="menu ">
             <ul>
                 <li class="btn"><a href="../public/index.php">Accueil</a></li>
@@ -30,8 +30,8 @@
                 <li class="btn"><a href="../public/index.php?route=jeux">Vidéos de jeux</a></li>
 
                 <?php
-                   if ($this->session->get('pseudo')) {
-                ?>
+           if ($this->session->get('pseudo')) {
+        ?>
                 <li class="btn"> <a href="../public/index.php?route=logout">Deconnexion</a></li>
                 <li class="btn"> <a href="../public/index.php?route=profile">Profil</a></li>
 
@@ -39,16 +39,16 @@
                 <li class="btn"> <a href="../public/index.php?route=administration">Administration</a></li>
 
                 <?php } 
-                } else {
-                ?>
+        } else {
+        ?>
 
                 <li class="btn"> <a href="../public/index.php?route=register">Inscription</a></li>
                 <li class="btn"> <a href="../public/index.php?route=login">Connexion</a></li>
 
                 <?php
-                }
-                ?>
-            </ul>
+        }
+        ?>
+
         </div>
         <div class="entete">
             <h1>Versus</h1>
@@ -60,18 +60,23 @@
                     <p>début des années 90, où le secteur des consoles est segmenté par deux acteurs diamétralement
                         opposés : Nintendo et SEGA.</p>
                 </div>
+                </br>
+
+
+                <hr>
             </div>
         </div>
     </header>
-    <div id="slider">
-    </div>
+
     <div id="content">
 
 
         <?= $content ?>
 
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/App.js"></script>
-    <script src="js/slider.js"></script>
+    <footer>
+
+
+
+    </footer>
 </body>

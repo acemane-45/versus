@@ -7,4 +7,3 @@
     <a href="../public/index.php?route=updatePassword">Modifier son mot de passe</a>
     <a href="../public/index.php?route=deleteAccount">Supprimer mon compte</a>
 </div>
-<br>

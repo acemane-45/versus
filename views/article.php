@@ -1,13 +1,15 @@
 <?php $this->title = 'Article'; ?>
 
 <?php
-foreach ($articles as $article)
-{
+   foreach ($articles as $article)
+   {
     ?>
-    <div class='article_view'>
-        <h2 class="btn"><a href="../public/index.php?route=article&articleId=<?= htmlspecialchars_decode($article->getId());?>"><?= htmlspecialchars_decode($article->getTitle());?></a></h2>
-      
-      <?php
+<div class='article_view'>
+    <h2 class="btn"><a
+            href="../public/index.php?route=article&articleId=<?= htmlspecialchars_decode($article->getId());?>"><?= htmlspecialchars_decode($article->getTitle());?></a>
+    </h2>
+
+    <?php
       if(strlen($article->getContent()) <=100)
       {
           $content = $article->getContent();
@@ -21,11 +23,10 @@ foreach ($articles as $article)
       }
       echo $content; 
       ?>
-      
-       
-      <p>Creer le : <?= htmlspecialchars($article->getCreatedAt());?></p>
-    </div>
-    <br>
-    <?php
+
+
+    <p>Creer le : <?= htmlspecialchars($article->getCreatedAt());?></p>
+</div>
+<?php
 }
 ?>

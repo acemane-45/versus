@@ -2,5 +2,5 @@
 
 <div>
     <?php include('form_article.php');?>
-    
+
 </div>
